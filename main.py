@@ -4,6 +4,7 @@ import math, random, datetime, hashlib
 
 ALPHABET = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 
+#вызвать функцию, передав сообщение и сдвиг, вернет зашифрованный текст
 def encryption_caesar(msg, offset):
     encrypted_alphabet = ALPHABET[offset:] + ALPHABET[:offset]
     encrypted = []
@@ -13,6 +14,7 @@ def encryption_caesar(msg, offset):
         encrypted.append(encrypted_char)
     return ''.join(encrypted)
 
+#вызвать функцию, передав зашифрованное сообщение и сдвиг, вернет расшифрованный текст
 def decryption_caesar(msg, offset):
     encrypted_alphabet = ALPHABET[offset:] + ALPHABET[:offset]
     decrypted = []
@@ -26,6 +28,7 @@ def decryption_caesar(msg, offset):
 
 #Vigenere encryption
 
+#формирует словарь для кода, вспомгательная функция
 def form_dict():
     d = {}
     iter = 0
@@ -34,6 +37,7 @@ def form_dict():
         iter = iter + 1
     return d
 
+#шифруем слово
 def encode_val(word):
     list_code = []
     lent = len(word)
@@ -44,6 +48,7 @@ def encode_val(word):
                 list_code.append(value)
     return list_code
 
+#вспомогательная функция
 def comparator(value, key):
     len_key = len(key)
     dic = {}
@@ -57,6 +62,7 @@ def comparator(value, key):
             iter = 0
     return dic
 
+#создание сдвига для шифра
 def full_encode(value, key):
     dic = comparator(value, key)
     print('Compare full encode', dic)
@@ -67,6 +73,7 @@ def full_encode(value, key):
         lis.append(go)
     return lis
 
+#расшифровывание с помощью сдвига
 def full_decode(value, key):
     dic = comparator(value, key)
     print('Deshifre=', dic)
@@ -77,6 +84,7 @@ def full_decode(value, key):
         lis.append(go)
     return lis
 
+#расшифровываем слово
 def decode_val(list_in):
     list_code = []
     lent = len(list_in)
@@ -89,6 +97,7 @@ def decode_val(list_in):
 
 #OTP generation
 
+#при вызове функции возвращается сгенерироанный пароль
 def generateOTP():
     string = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ'
     OTP = ""
@@ -98,6 +107,7 @@ def generateOTP():
     return OTP
 
 #Blockchain
+#класс для использования в технологии блокчейн
 
 class Block:
 
@@ -125,6 +135,7 @@ def next_block(last_block):
     return Block(this_index, this_timestamp, this_data, this_hash)
 
 #Feistel network
+#достаточно просто запустить эту часть кода чтобы увидеть работу сети
 
 ROUNDS = 16
 KEY = 'Abcdefg'
